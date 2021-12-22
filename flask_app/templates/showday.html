@@ -16,7 +16,7 @@
         {% for food in day.foods %}
         <div class="d-flex">
             <p>{{food.category}} | {{food.name}} | Calories: {{food.calories}}</p>
-            <a href="/foods/edit/{{food.id}}" class="ms-3 text-white">Edit</a>
+            
             <a href="/foods/remove/{{food.id}}/{{day.id}}" class="ms-3 text-white">Remove</a>
 
         </div>

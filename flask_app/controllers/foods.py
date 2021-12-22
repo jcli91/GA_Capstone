@@ -38,7 +38,15 @@ def showedit(id, journal_id):
 
 @app.route("/foods/edit/<int:id>/<int:journal_id>", methods=["POST"])
 def updatefood(id, journal_id):
-    Food.updatefood({"id": id})
+    data = {
+        "id": id,
+        "category": request.form["category"],
+        "name": request.form["name"],
+        "calories": request.form["calories"]
+    }
+    Food.updatefood(data)
+    return redirect(f"/dates/{journal_id}")
+    
     
     
 
