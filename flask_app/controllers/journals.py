@@ -1,6 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, flash
 from flask_app.models.journal import Journal
+from flask_app.models.food import Food
 
 @app.route("/")
 def journal():
@@ -25,4 +26,13 @@ def addentry():
 @app.route("/dates/<int:id>")
 def showday(id):
     day = Journal.show_day(data = {"id": id})
-    return render_template("showday.html", day = day)
+    foodlist = Food.foodlist()
+    
+    return render_template("showday.html", day = day, foods = foodlist)
+
+@app.route("/delete_day/<int:id>")
+def delete_day(id):
+    data = {"id": id}
+    Journal.delete_by_id(data)
+    return redirect("/")
+

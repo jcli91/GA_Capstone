@@ -5,30 +5,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal</title>
+    <title>Single Entry</title>
 </head>
 <body class="bg-secondary container d-flex justify-content-center">
     <div>
 
-        <h1 class="text-center m-3">{{day.date.strftime('%B-%d-%Y')}}</h1>
-        <form action="/newfood/{{day.id}}">
+        <h1 class="text-center m-3 text-white">{{day.date.strftime('%B-%d-%Y')}}</h1>
+        <h2>Total Calories: {{day.total_calories}}</h2>
+
+        {% for food in day.foods %}
+        <div class="d-flex">
+            <p>{{food.category}} | {{food.name}} | Calories: {{food.calories}}</p>
+            <a href="/foods/edit/{{food.id}}" class="ms-3 text-white">Edit</a>
+            <a href="/foods/remove/{{food.id}}/{{day.id}}" class="ms-3 text-white">Remove</a>
+
+        </div>
+        {% endfor %}
+
+        <form action="/newfood/{{day.id}}" method="POST">
          <div class="mb-3" style="width:60vw">
              <label for="category" class="form-label">Category</label>
-             <input type="text" class="form-control">
+             <input type="text" name="category" class="form-control">
            </div>
            <div class="mb-3" style="width:60vw">
              <label for="name" class="form-label">Name</label>
-             <input type="text" class="form-control">
+             <input type="text" name="name" class="form-control">
            </div>
            <div class="mb-3" style="width:60vw">
              <label for="calories" class="form-label">Calories</label>
-             <input type="number" class="form-control">
+             <input type="number" name="calories" class="form-control">
            </div>
      
              <button class="btn btn-dark">Add Food</button>
              
         </form>
         <a href="/" class="btn btn-dark mt-3">Home</a>
+        <a href="/delete_day/{{day.id}}" class="btn btn-danger">Delete Day</a>
+        <div>
+          <h3>History</h3>
+          {% for food in foods %}
+            <div>
+                <h3 class="border-top">{{food.name}}</h3>
+                <a href="/foods/add_to_day/{{food.id}}/{{day.id}}"  class="text-white">Add to Day</a> |
+                <a href="/foods/edit/{{food.id}}/{{day.id}}"  class="text-white">Edit</a> |
+                <a href="/foods/delete/{{food.id}}/{{day.id}}"  class="text-white">Delete</a>
+            </div>
+          {% endfor %}
+        </div>
     </div>
 
 
