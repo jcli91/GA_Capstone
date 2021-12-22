@@ -9,11 +9,11 @@
 </head>
 <body class="bg-secondary container d-flex justify-content-center">
     <div>
-        <h1 class="text-center m-3" style="font-size: 3rem; text-decoration: underline">Calorie Tracker</h1>
+        <h1 class="text-center m-3 text-white" style="font-size: 3rem; text-decoration: underline">Calorie Tracker</h1>
         <form method="POST" action="/addentry">
             <label for="date" class="fw-bolder">Enter Date:</label>
             <input type="date" name="date">
-            <button type="submit" class="btn btn-dark">Add</button>
+            <button type="submit" class="btn btn-dark ms-2">Add</button>
         </form>
         {% for message in get_flashed_messages() %}
         <p class="text-danger">{{message}}</p>
