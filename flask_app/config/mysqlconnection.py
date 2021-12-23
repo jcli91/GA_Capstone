@@ -1,5 +1,3 @@
-# Connects to mysql database
-# allows crud funcitonality
 
 import pymysql.cursors
 from flask_app import DB

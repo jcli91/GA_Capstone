@@ -66,7 +66,7 @@
 
 ## Technologies
 - Python
-- Flask/Jinja
-- MySQL
+- Flask
+- MySQL(PyMySQL)
 - HTML/CSS
-
+- Bootstrap
