@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import query_db
 from flask import Flask
-# from flask_app.models import journal
+
 
 app = Flask(__name__)
 
@@ -56,7 +56,7 @@ class Food:
         query = "UPDATE food SET category = %(category)s, name = %(name)s, calories = %(calories)s WHERE id = %(id)s"
         results = query_db(query, data)
         print(results)
-        # food = cls(results)
+        
         
         
         
